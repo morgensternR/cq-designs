@@ -55,7 +55,11 @@ def plate4K():
          .center(*dimensions.cryomech_offset)
          .polygon(6, 3*inch, forConstruction=True)
          .vertices()
+<<<<<<< HEAD
          .hole(*thru('M4',thickness))#Edit 2/17/22 4.5 mm clearence hole for M4 screw
+=======
+         .hole(*tap('M4', thickness))
+>>>>>>> parent of 7e963e7 (Updated 4K plate with M4 clearance Holes)
          )
     
     # fiber / pumpout
@@ -170,22 +174,19 @@ def band_tube4K():
     return p
 
 if (__name__=='temp'):
-    """
+    
     p = plate4K()
     show_object(p,options={"alpha":0.5, "color": (64, 164, 223)})
-    
+    """
     cq.exporters.export(p, './outputs/plate4K.step')
-    
     t = tube4K()
-    
     cq.exporters.export(t, './outputs/tube4K.step')
     t = t.translate((0,0,1/8*inch))
-    show_object(t)
+    show_object(t) 
     
     m = mold_tube4K()
     show_object(m)
     cq.exporters.export(m, './outputs/m4K.step')
-    
     b = band_tube4K()
     cq.exporters.export(b, './outputs/b4K.step')
     show_object(b) 
